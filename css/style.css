@@ -1,0 +1,1252 @@
+```css
+/* =========================================================
+   PORTAFOLIO PROFESIONAL - SARA GÓMEZ
+   Hoja de estilos principal
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================================= */
+
+:root {
+    --primary: #6c63ff;
+    --primary-dark: #5148d8;
+    --secondary: #00bfa6;
+
+    --background: #f8f9fc;
+    --surface: #ffffff;
+    --surface-secondary: #f1f3f8;
+
+    --text: #171927;
+    --text-secondary: #626779;
+    --border: #e5e7ef;
+
+    --shadow: 0 15px 40px rgba(20, 25, 50, 0.08);
+    --shadow-hover: 0 20px 50px rgba(20, 25, 50, 0.14);
+
+    --radius: 18px;
+    --transition: all 0.3s ease;
+}
+
+
+/* MODO OSCURO */
+
+body.dark-mode {
+    --background: #0d0f17;
+    --surface: #151823;
+    --surface-secondary: #1c2030;
+
+    --text: #f5f6fa;
+    --text-secondary: #aeb3c2;
+    --border: #2b3040;
+
+    --shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    --shadow-hover: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+
+/* RESETEO */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+
+    background: var(--background);
+    color: var(--text);
+
+    line-height: 1.6;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+button {
+    font-family: inherit;
+}
+
+
+/* CONTENEDOR */
+
+.container {
+    width: min(1120px, 90%);
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   2. ENCABEZADO Y NAVEGACIÓN
+   ========================================================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    background: rgba(255, 255, 255, 0.85);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
+
+    transition: var(--transition);
+}
+
+
+.dark-mode .header {
+    background: rgba(13, 15, 23, 0.85);
+}
+
+
+.navbar {
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* LOGO */
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 800;
+
+    letter-spacing: -1px;
+
+    color: var(--text);
+}
+
+
+.logo span {
+    color: var(--primary);
+}
+
+
+/* MENÚ */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+
+    list-style: none;
+
+    gap: 30px;
+}
+
+
+.nav-menu a {
+    position: relative;
+
+    font-size: 0.92rem;
+    font-weight: 600;
+
+    color: var(--text-secondary);
+
+    transition: var(--transition);
+}
+
+
+.nav-menu a::after {
+    content: "";
+
+    position: absolute;
+
+    width: 0;
+    height: 2px;
+
+    left: 50%;
+    bottom: -8px;
+
+    background: var(--primary);
+
+    transform: translateX(-50%);
+
+    transition: width 0.3s ease;
+}
+
+
+.nav-menu a:hover {
+    color: var(--primary);
+}
+
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+
+/* BOTÓN DE TEMA */
+
+.theme-toggle,
+.menu-toggle {
+    border: none;
+
+    background: transparent;
+
+    color: var(--text);
+
+    cursor: pointer;
+}
+
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    font-size: 1.2rem;
+
+    transition: var(--transition);
+}
+
+
+.theme-toggle:hover {
+    background: var(--surface-secondary);
+
+    transform: rotate(20deg);
+}
+
+
+/* MENÚ MÓVIL */
+
+.menu-toggle {
+    display: none;
+
+    font-size: 1.6rem;
+}
+
+
+/* =========================================================
+   3. HERO
+   ========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding-top: 75px;
+}
+
+
+.hero-content {
+    display: grid;
+
+    grid-template-columns: 1.2fr 0.8fr;
+
+    align-items: center;
+
+    gap: 80px;
+}
+
+
+.hero-text {
+    animation: fadeUp 0.8s ease forwards;
+}
+
+
+.hero-subtitle {
+    color: var(--primary);
+
+    font-size: 0.85rem;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 15px;
+}
+
+
+.hero h1 {
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+
+    line-height: 0.95;
+
+    letter-spacing: -5px;
+
+    margin-bottom: 25px;
+}
+
+
+.hero h1 span {
+    color: var(--primary);
+}
+
+
+.hero h2 {
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+
+    color: var(--text-secondary);
+
+    font-weight: 500;
+
+    margin-bottom: 20px;
+}
+
+
+.hero-text > p:not(.hero-subtitle) {
+    max-width: 560px;
+
+    color: var(--text-secondary);
+
+    font-size: 1.05rem;
+
+    margin-bottom: 35px;
+}
+
+
+/* BOTONES */
+
+.hero-buttons {
+    display: flex;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+}
+
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 50px;
+
+    padding: 0 25px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+
+.btn-primary {
+    background: var(--primary);
+
+    color: #ffffff;
+
+    box-shadow: 0 10px 25px rgba(108, 99, 255, 0.25);
+}
+
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.35);
+}
+
+
+.btn-secondary {
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    color: var(--text);
+}
+
+
+.btn-secondary:hover {
+    border-color: var(--primary);
+
+    color: var(--primary);
+
+    transform: translateY(-3px);
+}
+
+
+/* IMAGEN / PERFIL */
+
+.hero-image {
+    display: flex;
+
+    justify-content: center;
+
+    animation: fadeIn 1s ease 0.2s both;
+}
+
+
+.image-placeholder {
+    width: min(350px, 80vw);
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    display: grid;
+    place-items: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    box-shadow:
+        0 30px 80px rgba(108, 99, 255, 0.25);
+
+    position: relative;
+}
+
+
+.image-placeholder::before {
+    content: "";
+
+    position: absolute;
+
+    inset: -15px;
+
+    border: 1px solid var(--primary);
+
+    border-radius: 50%;
+
+    opacity: 0.25;
+
+    animation: pulse 3s infinite;
+}
+
+
+.image-placeholder span {
+    color: white;
+
+    font-size: 5rem;
+
+    font-weight: 800;
+
+    letter-spacing: -5px;
+}
+
+
+/* =========================================================
+   4. SECCIONES
+   ========================================================= */
+
+.section {
+    padding: 110px 0;
+}
+
+
+.section-heading {
+    margin-bottom: 55px;
+}
+
+
+.section-heading p {
+    color: var(--primary);
+
+    font-size: 0.8rem;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+}
+
+
+.section-heading h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+
+    line-height: 1.1;
+
+    letter-spacing: -2px;
+}
+
+
+/* =========================================================
+   5. SOBRE MÍ
+   ========================================================= */
+
+.about-content {
+    display: grid;
+
+    grid-template-columns: 1.4fr 0.6fr;
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+
+.about-text p {
+    color: var(--text-secondary);
+
+    font-size: 1.05rem;
+
+    margin-bottom: 20px;
+}
+
+
+.about-card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 30px;
+
+    box-shadow: var(--shadow);
+}
+
+
+.info-item {
+    display: flex;
+
+    flex-direction: column;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+
+.info-item strong {
+    font-size: 0.8rem;
+
+    color: var(--primary);
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+.info-item span {
+    color: var(--text-secondary);
+
+    margin-top: 5px;
+}
+
+
+/* =========================================================
+   6. HABILIDADES
+   ========================================================= */
+
+.skills-section {
+    background: var(--surface-secondary);
+}
+
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+.skill-card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    padding: 30px;
+
+    min-height: 210px;
+
+    transition: var(--transition);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.skill-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    opacity: 0.06;
+
+    right: -30px;
+    top: -30px;
+
+    transition: var(--transition);
+}
+
+
+.skill-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: var(--shadow-hover);
+
+    border-color: rgba(108, 99, 255, 0.3);
+}
+
+
+.skill-card:hover::before {
+    transform: scale(2);
+}
+
+
+.skill-card > span {
+    display: block;
+
+    color: var(--primary);
+
+    font-weight: 800;
+
+    font-size: 0.8rem;
+
+    margin-bottom: 35px;
+}
+
+
+.skill-card h3 {
+    font-size: 1.3rem;
+
+    margin-bottom: 10px;
+}
+
+
+.skill-card p {
+    color: var(--text-secondary);
+
+    font-size: 0.95rem;
+}
+
+
+/* =========================================================
+   7. PROYECTOS
+   ========================================================= */
+
+.project-filters {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 35px;
+
+    flex-wrap: wrap;
+}
+
+
+.filter-btn {
+    border: 1px solid var(--border);
+
+    background: var(--surface);
+
+    color: var(--text-secondary);
+
+    padding: 9px 18px;
+
+    border-radius: 50px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: white;
+}
+
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+
+.project-card {
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: var(--radius);
+
+    overflow: hidden;
+
+    box-shadow: var(--shadow);
+
+    transition: var(--transition);
+}
+
+
+.project-card:hover {
+    transform: translateY(-10px);
+
+    box-shadow: var(--shadow-hover);
+}
+
+
+.project-image {
+    height: 220px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color: white;
+
+    font-size: 0.9rem;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+
+.project-content {
+    padding: 25px;
+}
+
+
+.project-content > span {
+    color: var(--primary);
+
+    font-size: 0.72rem;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+
+.project-content h3 {
+    margin: 10px 0;
+
+    font-size: 1.3rem;
+}
+
+
+.project-content p {
+    color: var(--text-secondary);
+
+    font-size: 0.92rem;
+
+    margin-bottom: 20px;
+}
+
+
+.project-link {
+    color: var(--primary);
+
+    font-weight: 700;
+
+    transition: var(--transition);
+}
+
+
+.project-link:hover {
+    letter-spacing: 1px;
+}
+
+
+/* PROYECTO OCULTO POR FILTRO */
+
+.project-card.hidden {
+    display: none;
+}
+
+
+/* =========================================================
+   8. FORMACIÓN / LÍNEA DE TIEMPO
+   ========================================================= */
+
+.timeline {
+    max-width: 850px;
+
+    margin: 0 auto;
+}
+
+
+.timeline-item {
+    display: grid;
+
+    grid-template-columns: 80px 1fr;
+
+    gap: 30px;
+
+    padding: 30px 0;
+
+    border-bottom: 1px solid var(--border);
+
+    transition: var(--transition);
+}
+
+
+.timeline-item:hover {
+    padding-left: 10px;
+}
+
+
+.timeline-number {
+    width: 55px;
+    height: 55px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    color: var(--primary);
+
+    font-weight: 800;
+}
+
+
+.timeline-item h3 {
+    margin-bottom: 8px;
+
+    font-size: 1.2rem;
+}
+
+
+.timeline-item p {
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   9. CONTACTO
+   ========================================================= */
+
+.contact-section {
+    background: var(--surface-secondary);
+
+    text-align: center;
+}
+
+
+.contact-content {
+    max-width: 700px;
+}
+
+
+.contact-content .section-heading {
+    margin-bottom: 20px;
+}
+
+
+.contact-content > p {
+    color: var(--text-secondary);
+
+    margin-bottom: 30px;
+
+    font-size: 1.05rem;
+}
+
+
+/* =========================================================
+   10. FOOTER
+   ========================================================= */
+
+.footer {
+    padding: 30px 0;
+
+    border-top: 1px solid var(--border);
+
+    background: var(--surface);
+}
+
+
+.footer .container {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.footer p {
+    color: var(--text-secondary);
+
+    font-size: 0.85rem;
+}
+
+
+.social-links {
+    display: flex;
+
+    gap: 20px;
+}
+
+
+.social-links a {
+    color: var(--text-secondary);
+
+    font-weight: 600;
+
+    transition: var(--transition);
+}
+
+
+.social-links a:hover {
+    color: var(--primary);
+}
+
+
+/* =========================================================
+   11. ANIMACIONES
+   ========================================================= */
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+
+}
+
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+
+        opacity: 0.25;
+    }
+
+    50% {
+        transform: scale(1.08);
+
+        opacity: 0.1;
+    }
+
+}
+
+
+/* =========================================================
+   12. ANIMACIÓN AL HACER SCROLL
+   ========================================================= */
+
+.section {
+    animation: sectionAppear linear;
+
+    animation-timeline: view();
+
+    animation-range: entry 0% cover 25%;
+}
+
+
+@keyframes sectionAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* =========================================================
+   13. RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .hero-content {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+        gap: 50px;
+    }
+
+
+    .hero-text > p:not(.hero-subtitle) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+
+    .hero-image {
+        order: -1;
+    }
+
+
+    .image-placeholder {
+        width: 260px;
+    }
+
+
+    .about-content {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =========================================================
+   14. RESPONSIVE - CELULAR
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .navbar {
+        height: 68px;
+    }
+
+
+    .menu-toggle {
+        display: block;
+
+        order: 2;
+    }
+
+
+    .theme-toggle {
+        order: 3;
+    }
+
+
+    .nav-menu {
+        position: absolute;
+
+        top: 68px;
+        left: 0;
+
+        width: 100%;
+
+        padding: 25px;
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+
+        background: var(--surface);
+
+        border-bottom: 1px solid var(--border);
+
+        box-shadow: var(--shadow);
+
+        transform: translateY(-150%);
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition: var(--transition);
+    }
+
+
+    .nav-menu.active {
+        transform: translateY(0);
+
+        opacity: 1;
+
+        pointer-events: auto;
+    }
+
+
+    .hero {
+        padding-top: 110px;
+
+        min-height: auto;
+
+        padding-bottom: 80px;
+    }
+
+
+    .hero h1 {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+
+        letter-spacing: -3px;
+    }
+
+
+    .hero h2 {
+        font-size: 1.2rem;
+    }
+
+
+    .section {
+        padding: 80px 0;
+    }
+
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .timeline-item {
+        grid-template-columns: 55px 1fr;
+
+        gap: 20px;
+    }
+
+
+    .footer .container {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================================
+   15. ACCESIBILIDAD
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+
+}
+```
+/* ========================================
+   ANIMACIONES AL HACER SCROLL
+======================================== */
+
+section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
